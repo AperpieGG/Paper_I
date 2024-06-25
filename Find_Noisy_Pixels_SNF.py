@@ -51,8 +51,7 @@ def plot_images():
 
 
 def read_bias_data(directory):
-    base_path = ('/Users/u5500483/Downloads/Paper_I/'
-                 'Images/json/Bias_Dark_Frames/')
+    base_path = '/Users/u5500483/Documents/GitHub/Paper_I/Results/Images/Bias_Dark_Frames/'
     path_off = f'{base_path}Bias_{directory}_SNF_OFF/'
     path_on = f'{base_path}Bias_{directory}_SNF_ON/'
 

@@ -50,10 +50,8 @@ def plot_images():
 
 
 def read_bias_data():
-    path_FFR = ('/Users/u5500483/Downloads/Paper_I/Marana_updated_compare/'
-                'Testing_CMOS_Linux/Images/json/Bias_Dark_Frames/Bias_FFR/')
-    path_HDR = ('/Users/u5500483/Downloads/Paper_I/Marana_updated_compare/'
-                'Testing_CMOS_Linux/Images/json/Bias_Dark_Frames/Bias_HDR/')
+    path_FFR = '/Users/u5500483/Documents/GitHub/Paper_I/Results/Images/Bias_Dark_Frames/Bias_FFR/'
+    path_HDR = '/Users/u5500483/Documents/GitHub/Paper_I/Results/Images/Bias_Dark_Frames/Bias_HDR/'
     list_images_ffr = glob.glob(path_FFR + '*.fits')
     list_images_hdr = glob.glob(path_HDR + '*.fits')
     bias_data_ffr = [fits.getdata(image_path) for image_path in list_images_ffr]
@@ -121,10 +119,10 @@ def plot_pixel_time_series(frame_numbers, pixel_values, coordinates):
     plt.figure()
 
     plt.plot(frame_numbers, pixel_values, 'o',
-             label="Std, $\mathdefault{\sigma}$ = " + str(round(np.std(pixel_values), 2)) + ' cts')
+             label="RMS = " + str(round(np.std(pixel_values), 2)) + ' ADU')
     plt.plot(frame_numbers, pixel_values, '-', alpha=0.2)
     plt.xlabel('Frame Number')
-    plt.ylabel('Pixel Value [cts]')
+    plt.ylabel('Pixel Value (ADU)')
     if args.directory == "HDR":
         plt.title(f'Time Series for Pixel in HDR ({coordinates[0]}, {coordinates[1]})')
     elif args.directory == "FFR":
