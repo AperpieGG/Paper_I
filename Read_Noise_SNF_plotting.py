@@ -3,6 +3,7 @@
 """
 This script reads the bias data from the given directory. It will then plot
 the read noise 2-D histogram and the histogram of the read noise values.
+Sensitivities are set for Marana 1041
 """
 import argparse
 import glob
@@ -60,8 +61,8 @@ def read_bias_data(directory, snf_mode):
     sensitivity = get_sensitivity(directory)
     print(f'Calculating the read noise with sensitivity of {sensitivity}')
 
-    path = (f'/Users/u5500483/Downloads/Paper_I/Images/'
-            f'json/Bias_Dark_Frames/Bias_{directory}_{snf_mode}/')
+    path = (f'/Users/u5500483/Documents/GitHub/Paper_I/Results/'
+            f'Images/Bias_Dark_Frames/Bias_{directory}_{snf_mode}/')
 
     list_images = glob.glob(path + '*.fits')
     bias_values = []
