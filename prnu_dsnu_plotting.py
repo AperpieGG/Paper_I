@@ -17,13 +17,13 @@ def Calculate_prnu():
 
 
 def read_fits_prnu_FFR():
-    prnu_FFR_path = '/Users/u5500483/Downloads/home/ops/cmos_marana/Marana_updated_compare/Testing_CMOS_Linux/Images/json/PRNU_FFR_imagemapcts.fits'
+    prnu_FFR_path = '/Users/u5500483/Documents/GitHub/Paper_I/Results/Images/PRNU_FFR_imagemapcts.fits'
     prnu_FFR = fits.getdata(prnu_FFR_path)
     return prnu_FFR
 
 
 def read_fits_prnu_HDR():
-    prnu_HDR_path = '/Users/u5500483/Downloads/home/ops/cmos_marana/Marana_updated_compare/Testing_CMOS_Linux/Images/json/PRNU_HDR_imagemapcts.fits'
+    prnu_HDR_path = '/Users/u5500483/Documents/GitHub/Paper_I/Results/Images/PRNU_HDR_imagemapcts.fits'
     prnu_HDR = fits.getdata(prnu_HDR_path)
     return prnu_HDR
 
@@ -70,7 +70,7 @@ def Calculate_dsnu():
 
 
 def read_fits_dsnu_FFR():
-    dsnu_FFR_path = '/Users/u5500483/Downloads/home/ops/cmos_marana/Marana_updated_compare/Testing_CMOS_Linux/Images/json/DSNU_FFR_imagects.fits'
+    dsnu_FFR_path = '/Users/u5500483/Documents/GitHub/Paper_I/Results/Images/DSNU_FFR_imagects.fits'
     dsnu_FFR = fits.getdata(dsnu_FFR_path)
     DSNUimage_FFR_mean = dsnu_FFR
     DSNUstd_FFR_value = np.std(dsnu_FFR)
@@ -78,7 +78,7 @@ def read_fits_dsnu_FFR():
 
 
 def read_fits_dsnu_HDR():
-    dsnu_HDR_path = '/Users/u5500483/Downloads/home/ops/cmos_marana/Marana_updated_compare/Testing_CMOS_Linux/Images/json/DSNU_HDR_imagects.fits'
+    dsnu_HDR_path = '/Users/u5500483/Documents/GitHub/Paper_I/Results/Images/DSNU_HDR_imagects.fits'
     dsnu_HDR = fits.getdata(dsnu_HDR_path)
     DSNUimage_HDR_mean = dsnu_HDR
     DSNUstd_HDR_value = np.std(dsnu_HDR)
@@ -151,7 +151,7 @@ def create_histogram_2(image, figure1, binwidth):
 
     MaxNoOccurs, x, _ = plt.hist(HistList, bins, log=True, color=default_orange_color)
 
-    return (HistList, bins, MaxNoOccurs, x)
+    return HistList, bins, MaxNoOccurs, x
 
 
 def create_histogram(image, figure1, binwidth):
@@ -176,8 +176,8 @@ def create_histogram(image, figure1, binwidth):
 
     MaxNoOccurs, x, _ = plt.hist(HistList, bins, log=True, color=default_blue_color)
 
-    return (HistList, bins, MaxNoOccurs, x)
+    return HistList, bins, MaxNoOccurs, x
 
 
-# Calculate_prnu()
-Calculate_dsnu()
+Calculate_prnu()
+# Calculate_dsnu()
