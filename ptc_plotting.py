@@ -8,7 +8,7 @@ from plot_images import plot_images
 
 def read_json():
     print("Reading the json file")
-    path = '/Users/u5500483/Downloads/home/ops/cmos_marana/Marana_updated_compare/Testing_CMOS_Linux/Images/json/'
+    path = '/Users/u5500483/Documents/GitHub/Paper_I/Results/'
     with open(path + 'PTC_HDR_12bit_temp_-25.json') as json_file:
         data = json.load(json_file)
     exposure_times = data["exposure_times"]
@@ -62,7 +62,7 @@ def plot_ptc(corrected_counts, corrected_variance_sqr, saturation_grey_value, va
 
     ax.plot(saturation_grey_value, variance_sqr_saturation_grey, 'b*', label='FWC = %.1f cts // %.1f e$^-$' % (
         saturation_grey_value, saturation_grey_value * CameraSensitivity))
-    extra_label = 'Sensitivity = %.2f e$^-$/cts' % (CameraSensitivity)
+    extra_label = 'Sensitivity = %.2f e$^-$/cts' % CameraSensitivity
     extra_handle = mpatches.Patch(facecolor='white', edgecolor='red', label=extra_label)
     handles, labels = plt.gca().get_legend_handles_labels()
     handles.append(extra_handle)
@@ -72,6 +72,7 @@ def plot_ptc(corrected_counts, corrected_variance_sqr, saturation_grey_value, va
     # fig.savefig('PTC_FFR_12bit_temp_-25.pdf', bbox_inches='tight')
 
 
-exposure_times, corrected_counts, corrected_variance_sqr, saturation_grey_value, variance_sqr_saturation_grey, CameraSensitivity = read_json()
+(exposure_times, corrected_counts, corrected_variance_sqr, saturation_grey_value,
+ variance_sqr_saturation_grey, CameraSensitivity) = read_json()
 plot_ptc(corrected_counts, corrected_variance_sqr, saturation_grey_value, variance_sqr_saturation_grey,
          CameraSensitivity)

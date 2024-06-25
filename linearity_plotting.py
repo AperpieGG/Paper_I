@@ -37,7 +37,7 @@ def plot_images():
     plt.rcParams['legend.fontsize'] = 14
 
 
-path = '/Users/u5500483/Downloads/home/ops/cmos_marana/Marana_updated_compare/Testing_CMOS_Linux/Images/json/'
+path = '/Users/u5500483/Documents/GitHub/Paper_I/Results/'
 with open(path + 'PTC_FFR_12bit_temp_-25.json') as json_file:
     data = json.load(json_file)
 temperature = data["temperature"]
