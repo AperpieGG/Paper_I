@@ -6,8 +6,9 @@ from plot_images import plot_images
 
 plot_images()
 
+path = '/Users/u5500483/Documents/GitHub/Paper_I/Results/'
 # Load data from JSON file
-with open('dc_vs_temp.json') as json_file:
+with open(path + 'DC_vs_T_FFR_Marana.json') as json_file:
     data = json.load(json_file)
 
 # Extract temperature and dark current data
@@ -22,7 +23,7 @@ temperature_ccd = []
 dc_ccd = []
 
 # Open the file
-with open('dc_temp_ikon.json', 'r') as json_file:
+with open(path + 'DC_vs_T_Ikon-L.json') as json_file:
     # Read each line in the file
     for line in json_file:
         try:
@@ -75,11 +76,11 @@ plt.ylim(1e-1, 1e2)
 plt.show()
 
 print('The dc values are:', dc)
-print('The dc values from the fits added are:', fit_total)
-print('The dc values from the first fit are:', fit_1)
-print('The dc values from the second fit are:', fit_2)
+# print('The dc values from the fits added are:', fit_total)
+# print('The dc values from the first fit are:', fit_1)
+# print('The dc values from the second fit are:', fit_2)
 
-# Example values
+
 I_dark = 0.736  # dark current in e/pix/sec
 pixel_size_microns = 11  # pixel size in microns
 A_pixel = (pixel_size_microns / 1e6) ** 2  # pixel area in m^2, convert microns to meters and calculate area
