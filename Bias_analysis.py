@@ -87,8 +87,8 @@ def read_bias_data(directory):
     sensitivity = get_sensitivity(directory)
     print(f'Calculating the read noise with sensitivity of {sensitivity}')
 
-    path = (f'/Users/u5500483/Downloads/Paper_I/Marana_updated_compare/'
-            f'Testing_CMOS_Linux/Images/json/Bias_Dark_Frames/Bias_{directory}/')
+    path = (f'/Users/u5500483/Downloads/Paper_I/Images/'
+            f'json/Bias_Dark_Frames/Bias_{directory}/')
 
     list_images = glob.glob(path + '*.fits')
     bias_values = []
