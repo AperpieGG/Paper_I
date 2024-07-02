@@ -37,7 +37,7 @@ with open(path + 'DC_vs_T_Ikon-L.json') as json_file:
             print(f"Skipping invalid JSON line: {line.strip()}")
 
 # Convert lists to numpy arrays if needed
-temperature_ccd = np.array(temperature_ccd) + 49
+temperature_ccd = np.array(temperature_ccd) #+ 49
 dc_ccd = np.array(dc_ccd)
 
 
@@ -71,8 +71,10 @@ plt.yscale('log')
 plt.xlabel('Temperature (\N{DEGREE SIGN}C)')
 plt.ylabel('Dark Current (e$^-$/pixel/sec)')
 plt.ylim(1e-1, 1e2)
+plt.xlim(-70, 20)
 # plt.tight_layout()
 # plt.savefig('DC_vs_Temp.pdf', bbox_inches='tight')
+plt.savefig('DC_vs_Temp.pdf', bbox_inches='tight')
 plt.show()
 
 print('The dc values are:', dc)
