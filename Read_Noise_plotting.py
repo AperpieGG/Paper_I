@@ -126,6 +126,8 @@ def plot_read_noise(value_mean, value_std, directory):
     hb = ax1.hist2d(value_mean, value_std, bins=100, cmap='cividis', norm=LogNorm())
     ax1.set_xlabel('Mean (ADU)')
     ax1.set_ylabel('RMS (ADU)')
+    ax1.set_ylim(0, 25)
+    ax1.set_xlim(90, 109)
     ax1.legend(loc='best')
     legend_elements = [Patch(facecolor='none', edgecolor='darkblue', label=f'{directory} Mode')]
     ax1.legend(handles=legend_elements, loc='upper left')
