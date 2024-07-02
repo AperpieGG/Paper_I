@@ -74,7 +74,6 @@ plt.ylim(1e-1, 1e2)
 plt.xlim(-70, 20)
 # plt.tight_layout()
 # plt.savefig('DC_vs_Temp.pdf', bbox_inches='tight')
-plt.savefig('DC_vs_Temp.pdf', bbox_inches='tight')
 plt.show()
 
 print('The dc values are:', dc)
