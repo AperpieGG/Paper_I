@@ -2,7 +2,7 @@ from matplotlib import pyplot as plt
 
 
 def plot_images():
-    plt.rcParams['figure.dpi'] = 100
+    plt.rcParams['figure.dpi'] = 300
     plt.rcParams['xtick.top'] = True
     plt.rcParams['xtick.labeltop'] = False
     plt.rcParams['xtick.labelbottom'] = True
@@ -24,13 +24,13 @@ def plot_images():
     plt.rcParams['ytick.minor.left'] = True
 
     plt.rcParams['font.family'] = 'Times New Roman'
-    plt.rcParams['font.size'] = 12
+    plt.rcParams['font.size'] = 14
 
     plt.rcParams['legend.frameon'] = True
     plt.rcParams['legend.framealpha'] = 0.8
     plt.rcParams['legend.loc'] = 'best'
     plt.rcParams['legend.fancybox'] = True
-    plt.rcParams['legend.fontsize'] = 12
+    plt.rcParams['legend.fontsize'] = 14
 
 
 plot_images()
