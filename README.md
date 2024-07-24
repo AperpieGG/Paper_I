@@ -13,3 +13,5 @@ Analysis include results from:
 Bias images will be given upon request
 Dark images will be given upon request
 DSNU and PRNU images will be given upon request
+
+This rep does not contain .FITS files and the pyAndor package.
