@@ -79,7 +79,7 @@ def plot_linearity(exposure_times, ExposureTimeList_5_95, Linearitygradient, Lin
     ax1.axvline(x=endx, color='b', linestyle='--', linewidth=1)
     ax1.legend(loc='best')
 
-    ax2.plot(exposure_times, ResidualsList, 'ro', linewidth=1, label=' LE = $\\pm$ %5.3f %%' % (LinearityError))
+    ax2.plot(exposure_times, ResidualsList, 'ro', linewidth=1, label=' LE = $\\pm$ %5.3f %%' % LinearityError)
     ax2.plot([startx, endx], [0, 0], 'b-', linewidth=1)
     ax2.set_ylim(-3 * LinearityError, +3 * LinearityError)
     ax2.set_ylabel('Residuals [%]')
@@ -171,9 +171,6 @@ LinearityError = find_linearity_error(ResidualsList_5_95)
 plot_linearity(exposure_times, ExposureTimeList_5_95, Linearitygradient, LinearityOffset, CorrectedCtsList_5_95,
                ResidualsList_5_95, LinearityError, ResidualsList, corrected_counts, figure)
 
-print('LinearityError (LE) = +/- {} %'.format(LinearityError))
-
-print('Finished Finding PTC\n')
 
 # Linearity Analysis with Weighted Least Squares starts here
 
@@ -243,3 +240,7 @@ def plot_linearity_3_residuals(ax, residuals_3, NL_3, exp_min, exp_max):
 
 
 fit_3, residuals_3, NL_3 = perform_linearity_analysis()
+
+print('LinearityError (LE) = +/- {} %'.format(NL_3))
+
+print('Finished Finding PTC\n')
