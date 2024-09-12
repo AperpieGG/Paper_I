@@ -17,14 +17,14 @@ Bias_images_path_hdr = f'/Users/u5500483/Documents/GitHub/Paper_I/Results/Images
 Bias_images_path_ffr = f'/Users/u5500483/Documents/GitHub/Paper_I/Results/Images/Bias_Dark_Frames/Bias_{MODE_FFR}/'
 
 
-def get_images(path):
+def get_images(path, sense):
     bias_values = []
     list_images = glob.glob(path + '*.fits')
     for filename in list_images:
         bias_values.append(fits.getdata(filename))
     bias_values = np.array(bias_values)
     print(f'The shape of the bias_values is: {bias_values.shape}')
-
+    bias_values = bias_values * sense
     return bias_values
 
 
@@ -43,29 +43,30 @@ def column_to_column(bias_values):
 def plot_histograms(row_std_hdr, row_std_ffr, col_std_hdr, col_std_ffr):
 
     plt.subplot(2, 1, 1)
-    plt.hist(row_std_hdr, bins=15, alpha=1, label='HDR')
-    plt.hist(row_std_ffr, bins=15, alpha=1, label='FFR')
+    plt.hist(row_std_hdr, bins=15, alpha=0.8, label='HDR')
+    plt.hist(row_std_ffr, bins=15, alpha=0.8, label='FFR')
     # plt.title('Row-to-Row Variation')
-    plt.xlabel('Standard Deviation')
+    plt.xlabel('Standard Deviation (e$^{-}$)')
     plt.ylabel('Frequency')
     plt.legend()
 
     plt.subplot(2, 1, 2)
-    plt.hist(col_std_hdr, bins=15, alpha=1, label='HDR')
-    plt.hist(col_std_ffr, bins=15, alpha=1, label='FFR')
+    plt.hist(col_std_hdr, bins=15, alpha=0.8, label='HDR')
+    plt.hist(col_std_ffr, bins=15, alpha=0.8, label='FFR')
     # plt.title('Column-to-Column Variation')
-    plt.xlabel('Standard Deviation')
+    plt.xlabel('Standard Deviation (e$^{-}$)')
     plt.ylabel('Frequency')
     plt.legend()
 
     plt.tight_layout()
+    plt.savefig(f'{path}Row_Column_Variation_2048.png')
     plt.show()
 
 
 def main():
     plot_images()
     # Load and process HDR images
-    bias_values_hdr = get_images(Bias_images_path_hdr)
+    bias_values_hdr = get_images(Bias_images_path_hdr, sense=1.131)
     row_std_hdr = row_to_row(bias_values_hdr)
     col_std_hdr = column_to_column(bias_values_hdr)
 
@@ -73,7 +74,7 @@ def main():
     print(f'HDR Column-to-Column std mean: {np.mean(col_std_hdr)}')
 
     # Load and process FFR images
-    bias_values_ffr = get_images(Bias_images_path_ffr)
+    bias_values_ffr = get_images(Bias_images_path_ffr, sense=0.632)
     row_std_ffr = row_to_row(bias_values_ffr)
     col_std_ffr = column_to_column(bias_values_ffr)
 
